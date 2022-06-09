@@ -1,7 +1,5 @@
-# E-Commerce-App
+#Rest API E-Commerce-App
 
 # Các công nghệ , ngôn ngữ được sử dụng
-  - FrontEnd : React JS , Redux , FontAwesomeIcon,
-  - Backend : Node Js ( Express JS ) , MongoDB , MySQL , Mongoose 
-  - Api ( Tự Build ): Node Js ( ExpressJS ) , Mongoose 
+  - Api ( Tự Build ): Node Js ( ExpressJS ) , Mongoose , MongoDB
   - Một số công nghệ khác : Stripe
