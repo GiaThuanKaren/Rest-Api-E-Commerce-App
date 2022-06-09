@@ -9,3 +9,5 @@ module.exports = function ConnectDB() {
       console.log(e + "Loi");
     });
 };
+
+// mongodb+srv://<username>:<password>@cluster0.a6cyoli.mongodb.net/?retryWrites=true&w=majority
