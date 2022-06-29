@@ -30,41 +30,51 @@ routes.put("/:id", VerifyToken, (req, res) => {
 //DELETE
 
 routes.delete("/:id", VerifyandAdmin, (req, res) => {
-    User.findByIdAndDelete(req.params.id)
-        .then(item=>{
-            res.status(200).json("User has been deleted")
-        })
-        .catch(e=>{
-            res.status(500).json(e)
-        })
+  User.findByIdAndDelete(req.params.id)
+    .then((item) => {
+      res.status(200).json("User has been deleted");
+    })
+    .catch((e) => {
+      res.status(500).json(e);
+    });
 });
-
 
 //GET
 
 routes.get("/find/:id", VerifyandAdmin, (req, res) => {
-    User.findById(req.params.id)
-        .then(item=>{
-            const {password,...other}=item._doc;
-            res.status(200).json(other)
-        })
-        .catch(e=>{
-            res.status(500).json(e)
-        })
+  User.findById(req.params.id)
+    .then((item) => {
+      const { password, ...other } = item._doc;
+      res.status(200).json(other);
+    })
+    .catch((e) => {
+      res.status(500).json(e);
+    });
 });
 
 routes.get("/", VerifyandAdmin, (req, res) => {
+  const query = req.query.new;
+  if (query) {
     User.find()
-        .then(item=>{
-            // const {password,...other}=item._doc;
-            res.status(200).json(item)
-        })
-        .catch(e=>{
-            res.status(500).json(e)
-        })
+      .sort({_id:-1})
+      .limit(5)
+      .then((item) => {
+        // const {password,...other}=item._doc;
+        res.status(200).json(item);
+      })
+      .catch((e) => {
+        res.status(500).json(e);
+      });
+  } else {
+    User.find()
+      .then((item) => {
+        // const {password,...other}=item._doc;
+        res.status(200).json(item);
+      })
+      .catch((e) => {
+        res.status(500).json(e);
+      });
+  }
 });
-
-
-
 
 module.exports = routes;
